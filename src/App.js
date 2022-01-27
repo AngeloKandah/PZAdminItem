@@ -1,10 +1,10 @@
 import './App.css';
-import Icons from './components/images/Icons';
+import Main from './components/main/Main';
 
 function App() {
   return (
     <div className='App'>
-      <Icons />
+      <Main />
     </div>
   );
 }
