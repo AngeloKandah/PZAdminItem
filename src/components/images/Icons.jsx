@@ -1,25 +1,43 @@
 import { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import getIcons from '../../getIcons';
+import getAllItemInfo from '../../lib/getAllItemInfo';
 
 function Icons() {
-  const [icons, setIcon] = useState([]);
+  const [items, setItems] = useState([]);
   useEffect(() => {
     async function getAllIcons() {
-      const iconName = await getIcons();
-      setIcon(iconName);
+      const itemInfo = await getAllItemInfo();
+      setItems(itemInfo);
     }
     getAllIcons();
   }, []);
   return (
     <div>
-      {icons.map((icon) =>
-        Array.isArray(icon) ? (
-          icon.map((subIcon) => (
-            <img src={`icons/Item_${subIcon}.png`} alt={subIcon} key={uuidv4()} />
-          ))
-        ) : (
-          <img style={{width: '30px', height: '30px'}}src={`icons/Item_${icon}.png`} alt={icon} key={uuidv4()} />
+      {items.map((item) =>
+        item.map((info) =>
+          info.Icon ? (
+            <img
+              src={`icons/Item_${info.Icon}.png`}
+              onError={(e) => {
+                e.target.src = 'icons/placeholder.png';
+              }}
+              style={{ maxWidth: '30px', maxHeight: '30px' }}
+              alt={info.Icon}
+              key={uuidv4()}
+            />
+          ) : (
+            info.IconsForTexture.split(';').map((texture) => (
+              <img
+                src={`icons/Item_${texture}.png`}
+                onError={(e) => {
+                  e.target.src = 'icons/placeholder.png';
+                }}
+                style={{ maxWidth: '30px', maxHeight: '30px' }}
+                alt={texture}
+                key={uuidv4()}
+              />
+            ))
+          )
         )
       )}
     </div>
