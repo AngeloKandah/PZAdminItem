@@ -6,11 +6,11 @@ function Icons({ iconName }) {
       <img
         src={`icons/Item_${iconName}.png`}
         onError={(e) => {
-          e.target.src = 'icons/placeholder.png';
           e.target.onerror = null;
+          e.target.src = 'icons/placeholder.png';
         }}
-        style={{ maxWidth: '30px', maxHeight: '30px' }}
         alt={iconName}
+        style={{ maxWidth: '30px', maxHeight: '30px' }}
       />
     </StyledIcon>
   );

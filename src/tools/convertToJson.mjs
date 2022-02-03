@@ -22,6 +22,7 @@ import * as rl from 'readline';
           processingItemData = true;
           curItem = line.replace(/\s*item\s*/g, '');
           json[curItem] = {};
+          json[curItem][['Key']] = curItem;
           return;
         }
         if (processingItemData && !line.includes('{')) {
