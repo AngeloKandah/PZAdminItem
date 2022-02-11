@@ -18,7 +18,6 @@ function Main({ setItemForModal }) {
     <ItemContainer>
       {items.map((item) =>
         item.map((info) => (
-          // key here causing entire remount, idk why
           <Panel key={info.Key} onClick={() => setItemForModal(info)}>
             {info.Icon ? (
               <Icons iconName={info.Icon} />
