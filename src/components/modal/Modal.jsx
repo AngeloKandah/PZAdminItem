@@ -11,10 +11,12 @@ import CyclingIcons from '../images/CyclingIcons';
 function Modal({ itemForModal, setItemForModal }) {
   const visible = Object.keys(itemForModal).length > 0;
   if (!visible) {
-    document.body.style.overflow = '';
+    document.body.style.overflowY = '';
+    document.getElementById('root').style.overflowY = '';
     return null;
   }
-  document.body.style.overflow = 'hidden';
+  document.body.style.overflowY = 'hidden';
+  document.getElementById('root').style.overflowY = 'scroll';
   return (
     <ModalContainer onClick={() => setItemForModal({})} isVisible={visible}>
       <ModalContent onClick={(e) => e.stopPropagation()}>

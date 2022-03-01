@@ -11,7 +11,6 @@ const ModalContainer = styled.div`
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
   display: ${(props) => (props.isVisible ? 'flex' : 'none')};
-  overflow-y: hidden;
 `;
 
 const ModalHeader = styled.div`
@@ -19,6 +18,7 @@ const ModalHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: start;
+  padding-left: 2rem;
   background-color: #fff;
 `;
 
